@@ -14,6 +14,18 @@ logging.basicConfig(format="format='%(asctime)s - %(name)s - %(levelname)s - %(m
 logger = logging.getLogger(__name__)
 
 
+def start(update: Update, context: CallbackContext):
+    # Send welcome message
+    update.message.reply_text("Welcome, here is a list of the available commands:\n"
+                              "/start, displays this message.\n"
+                              "/temperature_graph <hours>, sends a graph of the last <> hours (24 hours if left blank).\n"
+                              "/last_readings, sends the last taken readings (humidity, temperature and dew point).")
+
+    # Update logfile
+    user = update.message.from_user
+    logging.info(f"issued the /start command (id: {user.id}, first_name: {user.first_name}, last_name: {user.last_name}, username: {user.username})")
+
+
 def temperature_graph(update: Update, context: CallbackContext):
     # Sends a graph of the last 24h
 
@@ -66,6 +78,7 @@ def main():
     dispatcher = updater.dispatcher
 
     # Define different commands
+    dispatcher.add_handler(CommandHandler("start", start))
     dispatcher.add_handler(CommandHandler("temperature_graph", temperature_graph))
     dispatcher.add_handler(CommandHandler("last_readings", last_readings))
 
