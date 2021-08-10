@@ -44,10 +44,11 @@ class TemperatureSensor:
 
     def write_to_db(self, data, connection):
         # Write data into the database (temperature, humidity and date)
-        sql = f"""INSERT INTO data(temperature, humidity, date) VALUES ({data[0]}, {data[1]}, {data[2]})"""
+        params = (data[0], data[1], data[2])
+        sql = f"""INSERT INTO data(temperature, humidity, date) VALUES (?,?,?)"""
         c = connection.cursor()
-        # Execute command
-        c.execute(sql)
+        # Execute command using parameters
+        c.execute(sql, params)
         # Commit to db
         connection.commit()
 
