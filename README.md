@@ -50,9 +50,16 @@ ssh pi@raspberrypi.local
 ```bash
 git clone https://github.com/Kirgnition/raspy-temperature-bot.git
 ```
-3. Paste your [bot token](https://core.telegram.org/bots#6-botfather) in the `TOKEN.py` file.
 
-4. Create a service for the temperature sensor:
+3. cd into the repository and install the requirements.
+```bash
+cd ./raspy-temperature-bot
+pip3 install -r ./requirements.txt
+```
+
+4. Paste your [bot token](https://core.telegram.org/bots#6-botfather) in the `TOKEN.py` file.
+
+5. Create a service for the temperature sensor:
    1. Create a file called `temperature_sensor.service`:
       ```bash
       sudo nano /etc/systemd/system/temperature_sensor.service
@@ -84,7 +91,7 @@ git clone https://github.com/Kirgnition/raspy-temperature-bot.git
       From the moment you start the service a reading will be taken by the sensor every 5 minutes and saved in a
       sqlite3 database.
 
-5. Create a service for the telegram bot in an analogous way.
+6. Create a service for the telegram bot in an analogous way.
 
 Your bot should be now active, in case of restart both the bot and the sensor will start automatically.
 
