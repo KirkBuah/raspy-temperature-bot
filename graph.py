@@ -39,7 +39,7 @@ class Graph:
         temperature = self.temperature
         humidity = self.humidity
         dewpoint = self.dewpoint
-        dates = self.dates
+        dates = list(self.dates)
         # Prepare axes and set title
         fig, ax1 = plt.subplots()
         ax2 = ax1.twinx()
