@@ -1,5 +1,7 @@
 # raspy-temperature-bot
 
+**Note: This project is currently not maintained.**
+
 This is a telegram bot hosted by a Raspberry Pi equipped with a temperature and humidity sensor. The bot is capable of sending plots and readings.  
 
 ![graph example](https://i.imgur.com/YO6baGM.jpeg)
